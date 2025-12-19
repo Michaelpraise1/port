@@ -45,7 +45,7 @@ linkWork.forEach(l => l.addEventListener('click', activeWork));
 //Portfolio Popup
 
 document.addEventListener('click', (e) => {
-    if(e.target.classList.contains('work-button')){
+    if (e.target.classList.contains('work-button')) {
         togglePortfolioPopup();
         portfolioItemDetails(e.target.parentElement);
     }
@@ -68,7 +68,7 @@ const modalViews = document.querySelectorAll('.services-modal');
 const modelBtns = document.querySelectorAll('.services-button');
 const modalCloses = document.querySelectorAll('.services-modal-close');
 
-let modal = function(modalClick) {
+let modal = function (modalClick) {
     modalViews[modalClick].classList.add('active-modal');
 }
 
@@ -93,8 +93,8 @@ let swiper = new Swiper(".testimonials-container", {
     loop: true,
     grabCursor: true,
     pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
+        el: ".swiper-pagination",
+        clickable: true,
     },
     breakpoints: {
         576: {
@@ -118,7 +118,7 @@ function focusFunc() {
 
 function blurFunc() {
     let parent = this.parentNode;
-    if(this.value == "") {
+    if (this.value == "") {
         parent.classList.remove('focus');
     }
 }
@@ -141,9 +141,9 @@ function navHighlighter() {
         const sectionTop = current.offsetTop - 50;
         const sectionId = current.getAttribute('id');
 
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link');
-        }else {
+        } else {
             document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link');
         }
     })
@@ -155,13 +155,13 @@ const navMenu = document.getElementById('sidebar');
 const navToggle = document.getElementById('nav-toggle');
 const navClose = document.getElementById('nav-close');
 
-if(navToggle) {
+if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.add('show-sidebar');
     })
 }
 
-if(navClose) {
+if (navClose) {
     navClose.addEventListener('click', () => {
         navMenu.classList.remove('show-sidebar');
     })
@@ -170,27 +170,27 @@ if(navClose) {
 
 // Email.js
 
- document.getElementById("contact-form").addEventListener("submit", function(e) {
-      e.preventDefault();
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      emailjs.sendForm("service_tp79wao", "template_en7dkl6", {
-          from_name: form.name,
-          to_name: "Oluwatoyin Michael",
-          from_email: form.email,
-          to_email: "michaeloluwatoyin49@gmail.com",
-          message: form.message,
-      },
-    "UPCHhqWbcMbv0ucog")
+    const name = e.target.querySelector('input[placeholder="Enter your name"]').value;
+    const email = e.target.querySelector('input[placeholder="Enter your email"]').value;
+    const message = e.target.querySelector('textarea[placeholder="Enter your message"]').value;
+
+    emailjs.send("service_tp79wao", "template_en7dkl6", {
+        from_name: name,
+        to_name: "Oluwatoyin Michael",
+        from_email: email,
+        to_email: "michaeloluwatoyin49@gmail.com",
+        message: message,
+    },
+        "UPCHhqWbcMbv0ucog")
         .then(() => {
-          alert("Email sent successfully!");
+            alert("Email sent successfully!");
+            e.target.reset(); // Reset the form after successful submission
         }, (error) => {
-          alert("FAILED...", error);
-        })
-        setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-    });
+            alert("FAILED...", error);
+        });
+});
 
 

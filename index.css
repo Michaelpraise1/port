@@ -160,7 +160,9 @@ button { cursor: pointer; }
 .info-item { display: flex; align-items: center; }
 .info-title, .info-subtitle { font-size: var(--small-font-size); }
     .info-title { font-weight: var(--font-medium); }
+.info-item, .contact-card a { color: inherit; text-decoration: none; }
 .info-icon { font-size: 1.8rem; color: var(--skin-color); margin-right: var(--mb075); }
+.info-item:hover .info-title, .contact-card a:hover { color: var(--skin-color); transition: .4s; }
 
 /* Main - About */
 
